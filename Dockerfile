@@ -20,6 +20,8 @@ RUN chmod +x build.sh
 # Install dependecies
 RUN npm install
 
+RUN groupadd -g 1000 jenkins && useradd -u 1000 jenkins -g jenkins --create-home
+
 # Expose the port the app runs in
 EXPOSE 9889 80
 
