@@ -24,8 +24,3 @@ pipeline {
         }
     }
 }
-                sh 'docker build -t test-app:${BUILD_NUMBER} . ' 
-            }
-        }
-    }
-}
