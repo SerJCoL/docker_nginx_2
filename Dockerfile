@@ -10,11 +10,15 @@ WORKDIR /usr/share/nginx/html/
 # Copy dependency definitions
 COPY package.json /usr/src/app
 
+# Get all the code needed to run the app
+COPY ./index.html /usr/share/nginx/html/index.html
+
 # Install dependecies
 RUN npm install
 
-# Get all the code needed to run the app
-COPY ./index.html /usr/share/nginx/html/index.html
+#working when using CLI and Jenkinsfile
+RUN ls 
+RUN chmod +x build.sh
 
 # Expose the port the app runs in
 EXPOSE 9889 80
@@ -23,4 +27,3 @@ ENTRYPOINT ["./index.html", "/usr/share/nginx/html/index.html"]
 
 # Serve the app
 CMD ["npm", "start", "nginx", "-g", "daemon off;"]
-
